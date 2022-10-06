@@ -4,7 +4,7 @@
         <title>Musician HTML page</title>
     </head>
  
-<body>
+<body style="color:rgb(255, 21, 41);background-color:rgb(169, 240, 207);">
 
 <h2>Musician guess by</h2>
 
@@ -21,20 +21,32 @@
 <script> 
     correct=0;
     wrong=0;
+    count=0;
     function checkGuess(){
         console.log("Check the guess")
         s = document.getElementById("secret_musician").value
         g = document.getElementById("guess_musician").value
        if(s==g){
-        correct+=1
+        correct+=1;
+        count=0;
         alert("You got it right")
        }
        else{
-        wrong+=1
+        wrong+=1;
+        count+=1;
         alert("Wrong Musician")
+        if (count>=3) {
+            if (wrong>=3) {
+                gameover();
+            }
+        }
+
        }
         
         result.innerHTML="Correct guess: "+correct+" Wrong guess: "+wrong
+    }
+    function gameover() {
+            alert("Sorry, game over")
     }
     </script>
 
